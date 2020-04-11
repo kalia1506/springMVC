@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- HandlerMapping -->
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="home.py">home</prop>
+				<prop key="wishmessage.py">wish</prop>
+				<prop key="about_us.py">about</prop>
+				<prop key="contactus.py">contact</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="home" class="com.kcp.controller.ShowHomeController" />
+	<bean id="wish" class="com.kcp.controller.WishMessageFrontController"/>
+	<bean id="about" class="com.kcp.controller.AboutUsController"/>
+	<bean id="contact" class="com.kcp.controller.ContactUsController"/>
+	<!--ViewResolver -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+</beans>
