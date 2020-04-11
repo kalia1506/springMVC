@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- HandlerMapping -->
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="home.py">home</prop>
+				<prop key="wishmessage.py">wish</prop>
+				<prop key="about_us.py">about</prop>
+				<prop key="contactus.py">contact</prop>
+			</props>
+		</property>
+	</bean>
+	
+	 <bean id="home"	class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="welcome" />
+	</bean> 
+	<bean id="wish"
+		class="com.kcp.controller.WishMessageFrontController" />
+		<!--set view names  -->
+	
+	<bean id="about" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="about_us" />
+	</bean>
+	<bean id="contact" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="contact_us" />
+	</bean>
+	<!--ViewResolver -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+</beans>
