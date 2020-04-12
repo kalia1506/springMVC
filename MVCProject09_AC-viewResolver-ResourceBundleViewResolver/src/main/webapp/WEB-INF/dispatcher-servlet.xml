@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- HandlerMapping -->
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="home.py">ufnvc</prop>
+				<prop key="wishmessage.py">wish</prop>
+				<prop key="about_us.py">ufnvc</prop>
+				<prop key="contactus.py">ufnvc</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id="wish"
+		class="com.kcp.controller.WishMessageFrontController">
+		<constructor-arg ref="msgservice" />
+	</bean>
+
+
+	<!-- <bean id="ufnvc" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/> -->
+	<bean id="ufnvc"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController" />
+
+	<!--ViewResolver -->
+	<bean
+		class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+		<property name="basename" value="com/kcp/commons/views" />
+	</bean>
+	<!-- <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver"> 
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> 
+		<property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/> 
+		<property name="prefix" value="/WEB-INF/pages/"/> <property name="suffix" 
+		value=".jsp"/> </bean> -->
+</beans>
