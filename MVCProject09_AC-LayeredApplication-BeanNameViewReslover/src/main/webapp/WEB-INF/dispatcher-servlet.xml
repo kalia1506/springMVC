@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!--configure HandlerMapping -->
+	<bean id="SimpleUrl"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="home.py">pvc</prop>
+				<prop key="liststudent.py">listdata</prop>
+				<prop key="stdreport.py">report</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- configure controller -->
+	<bean id="listdata"
+		class="com.kcp.controller.StudentMgmtController">
+		<constructor-arg ref="studentService" />
+	</bean>
+	<bean id="report"
+		class="com.kcp.controller.StudentReportController">
+		<constructor-arg ref="studentService" />
+	</bean>
+	
+	<!-- configure ViewController -->
+	<bean id="pvc"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController" />
+
+	<!--configure views class -->
+	<bean id="XLSview" class="com.kcp.views.StudentXLSReport" />
+	<bean id="PDFview" class="com.kcp.views.StudentPDFReport"/>
+	<!--ViewReslover -->
+	<bean
+		class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+</beans>
