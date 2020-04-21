@@ -29,7 +29,7 @@
 			<div class="card-body">
 				<h3 class="card-title">CURD Operation(Employee)</h3>
 				<a href="searchPage.py" class="btn btn-danger">Get Data</a>
-                <a href="#" class="btn btn-danger">Insert</a> 
+                <a href="insertPage.py" class="btn btn-danger">Insert</a> 
                 <a href="#" class="btn btn-danger">Update</a>
                 <a href="#" class="btn btn-danger">Delete</a>
 			</div>

@@ -6,5 +6,7 @@ import com.kcp.dto.EmployeeDTO;
 import com.kcp.dto.EmployeeRDTO;
 
 public interface EmployeeMgmtService {
-List<EmployeeRDTO> fatchEmployeeData(EmployeeDTO dto)throws Exception;
+	List<EmployeeRDTO> fatchEmployeeData(EmployeeDTO dto) throws Exception;
+
+	String insertEmployee(EmployeeRDTO rdto) throws Exception;
 }

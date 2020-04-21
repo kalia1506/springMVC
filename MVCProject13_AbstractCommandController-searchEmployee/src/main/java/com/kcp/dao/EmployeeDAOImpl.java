@@ -48,4 +48,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		}, bo.getEmpno(), bo.getEname(), bo.getEjob(), bo.getEsal());
 	}
 
+	@Override
+	public int insertData(EmployeeRBO rbo) throws Exception {
+		Object[] emp = new Object[] { rbo.getEmpno(), rbo.getEname(), rbo.getEjob(), rbo.getMgr(), rbo.getHireDate(),
+				rbo.getEsal(), rbo.getComm(), rbo.getDeptno() };
+		return JdbcTemplate.update(Jdbc_Query.save_employee, emp);
+	}
+
 }

@@ -24,11 +24,11 @@ public class EmployeeMgmtServiceImpl implements EmployeeMgmtService {
 		List<EmployeeRDTO> listrdto = new ArrayList<EmployeeRDTO>();
 		EmployeeBO bo = null;
 		bo = new EmployeeBO();
-		//convert dto to bo
+		// convert dto to bo
 		BeanUtils.copyProperties(dto, bo);
-		//use dto
+		// use dto
 		listrbo = dao.getEmployeeData(bo);
-		//convert listrbo to listrdto
+		// convert listrbo to listrdto
 		listrbo.forEach(rbo -> {
 			EmployeeRDTO rdto = new EmployeeRDTO();
 			BeanUtils.copyProperties(rbo, rdto);
@@ -36,6 +36,19 @@ public class EmployeeMgmtServiceImpl implements EmployeeMgmtService {
 		});
 
 		return listrdto;
+	}
+
+	@Override
+	public String insertEmployee(EmployeeRDTO rdto) throws Exception {
+		EmployeeRBO rbo = new EmployeeRBO();
+		BeanUtils.copyProperties(rdto, rbo);
+		int count = dao.insertData(rbo);
+		System.out.println(count);
+		if (count == 0) {
+			return "data not insert";
+		} else {
+			return "data insert successfully";
+		}
 	}
 
 }
