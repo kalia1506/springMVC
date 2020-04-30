@@ -8,7 +8,6 @@
 	background-color: orange;
 	color: black;
 	border: 1;
-	
 }
 
 #card-header2 {
@@ -35,8 +34,9 @@
 		</div>
 		<c:choose>
 			<c:when test="${!empty resultList }">
-				<table class="card-table table" id="header1" border="1">
-					<thead>
+				<table class="card-table table  table-image " id="header1"
+					border="1">
+					<thead class="text-center">
 						<tr>
 							<th>Name</th>
 							<th>Roll Number</th>
@@ -44,10 +44,11 @@
 							<th>Total Mark</th>
 							<th>Result</th>
 							<th>Average Mark</th>
+							<th colspan="2">Actions</th>
 						</tr>
 					</thead>
 					<c:forEach var="listStd" items="${resultList}">
-						<tbody>
+						<tbody class="text-center">
 							<tr>
 								<td><c:out value="${listStd.name }" /></td>
 								<td><c:out value="${listStd.rollNo}" /></td>
@@ -55,6 +56,11 @@
 								<td><c:out value="${listStd.totalMark}" /></td>
 								<td><c:out value="${listStd.result }" /></td>
 								<td><c:out value="${listStd.avgMark}" /></td>
+								<td><a href="update.py?eno=${listStd.rollNo}" class="btn btn-danger"><img
+										src="images/update.jpg" width="30" height="30" /></a></td>
+								<td><a href="update.py?eno=${listStd.rollNo}" class="btn btn-danger" ><img
+										src="images/delete.jpg" width="30" height="30"  /></a></td>
+
 							</tr>
 						</tbody>
 					</c:forEach>
@@ -64,6 +70,8 @@
 	no student found
 	</c:otherwise>
 		</c:choose>
+		<a href="#"><img src="images/insert.jpg" width="50" height="50" class="btn btn-success"/></a>
+		<a href="home.py"><img src="images/home.jpg" width="50" height="50" class="btn btn-danger" /></a>
 	</div>
 </body>
 </html>
