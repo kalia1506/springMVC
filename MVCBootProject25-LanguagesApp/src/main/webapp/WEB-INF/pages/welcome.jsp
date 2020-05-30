@@ -18,16 +18,16 @@
 </head>
 <body>
 	<div class="container">
-		<div class="card-header">
-		</div>
+		<div class="card-header"></div>
 		<div class="card" id="success">
 			<div class="card-body">
-				<h3 class="card-title text-center" >All student List</h3>
-				<a href="langList.py" class="btn btn-danger">Get All Languages
-				</a>
+				<h3 class="card-title text-center">All student List</h3>
+				<a href="langList.py" class="btn btn-danger">Get All Languages </a>
+				<div>
+					<h4>${languages}</h4>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div>${languages}</div> 
 </body>
 </html>
